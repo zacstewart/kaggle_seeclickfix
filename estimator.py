@@ -17,6 +17,12 @@ test  = pd.io.parsers.read_csv('data/test.csv')
 train['created_time'] = pd.to_datetime(train['created_time'])
 test['created_time']  = pd.to_datetime(test['created_time'])
 
+def targetize(variable):
+  return np.log(variable + 1)
+
+def detargetize(prediction):
+  return np.exp(prediction) - 1
+
 class FactorExtractor:
   def __init__(self, factor):
     self.factor = factor
@@ -174,10 +180,10 @@ if CV:
 
     for predictable in PREDICTABLES:
       construct_months = months_since_created.transform(construct)
-      construct_targets = construct[predictable]
+      construct_targets = targetize(construct[predictable])
 
       validate_months = months_since_created.transform(validate)
-      validate_targets = validate[predictable]
+      validate_targets = targetize(validate[predictable])
 
       pipeline.fit(construct, construct_targets)
       score = pipeline.score(validate, validate_targets)
@@ -190,14 +196,11 @@ submission = pd.DataFrame({'id': test['id']})
 
 print "Building submission"
 for predictable in PREDICTABLES:
-  train_months = months_since_created.transform(train)
-  train_target = train[predictable]
-
-  test_months = months_since_created.transform(test)
+  train_target = targetize(train[predictable])
 
   pipeline.fit(train, train_target)
   predictions = pipeline.predict(test)
-
+  predictions = detargetize(predictions)
   predictions[predictions < 0] = 0.0
   predictions = np.around(predictions).astype(int)
   submission[predictable] = predictions
