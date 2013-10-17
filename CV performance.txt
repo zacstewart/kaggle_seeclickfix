@@ -25,6 +25,16 @@ num_votes: 0.264082779812
 num_views: 0.0957141953819
 num_comments: 0.033120785281
 
+tags, source, discrete location, desc length, 1,2,3-gram tfidft
+num_votes: 0.28332472481
+num_views: 0.094269427346
+num_comments: 0.0746524978283
+
+tags, source, discrete location, desc length, 1,2,3-gram tfidft using log of predictables
+num_votes: 0.518832612099
+num_views: 0.279848857905
+num_comments: 0.113098062096
+
 Ideas
 
-* train/predict values per-month and then extrapolate
+* train/predict values per-month and then extrapolate | bad
