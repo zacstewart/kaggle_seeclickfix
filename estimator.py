@@ -143,13 +143,13 @@ desc_length_featurizer = Pipeline([
 
 desc_ngrams_featurizer = Pipeline([
   ('desc_extractor',    TextExtractor('description')),
-  ('count_vectorizer',  CountVectorizer(ngram_range = (1, 3), encoding = 'cp1252')),
+  ('count_vectorizer',  CountVectorizer(ngram_range = (1, 3), stop_words = 'english', encoding = 'cp1252')),
   ('tfidf_transformer', TfidfTransformer())
 ])
 
 summary_ngrams_featurizer = Pipeline([
   ('summary_extractor', TextExtractor('summary')),
-  ('count_vectorizer',  CountVectorizer(ngram_range = (1, 3), encoding = 'cp1252')),
+  ('count_vectorizer',  CountVectorizer(ngram_range = (1, 3), stop_words = 'english', encoding = 'cp1252')),
   ('tfidf_transformer', TfidfTransformer())
 ])
 
