@@ -64,10 +64,6 @@ class TextExtractor:
   def fit(self, *_):
     return self
 
-  def normalize(self, desc):
-    if type(desc) != str: desc = ''
-    return desc
-
 class LengthVectorizer:
   VEC_LEN = np.vectorize(len)
 
