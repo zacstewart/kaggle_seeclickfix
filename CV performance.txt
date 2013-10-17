@@ -1,0 +1,30 @@
+tags, locations
+num_votes:    0.20826522914
+num_views:    0.0463900779609
+num_comments: -0.00915516610715
+
+tags, locations, desc length
+num_votes: 0.213893936991
+num_views: 0.0509179454511
+num_comments: -0.00565685033158
+
+tags, locations, desc length, 1-gram counts
+num_votes: 0.194265113554
+num_views: 0.0678427693326
+num_comments: 0.0246830406565
+
+tags, locations, desc length, 1-gram tfidft
+num_votes: 0.194265113554
+num_views: 0.0678427693326
+num_comments: 0.0246830406565
+
+tags, locations, desc length, 1,2,3-gram tfidft, month
+
+tags, source, locations, desc length, 1,2,3-gram tfidft
+num_votes: 0.264082779812
+num_views: 0.0957141953819
+num_comments: 0.033120785281
+
+Ideas
+
+* train/predict values per-month and then extrapolate
