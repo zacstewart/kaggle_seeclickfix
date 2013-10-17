@@ -8,32 +8,37 @@ num_votes: 0.213893936991
 num_views: 0.0509179454511
 num_comments: -0.00565685033158
 
-tags, locations, desc length, 1-gram counts
+tags, locations, desc length, desc 1-gram counts
 num_votes: 0.194265113554
 num_views: 0.0678427693326
 num_comments: 0.0246830406565
 
-tags, locations, desc length, 1-gram tfidft
+tags, locations, desc length, desc 1-gram tfidft
 num_votes: 0.194265113554
 num_views: 0.0678427693326
 num_comments: 0.0246830406565
 
-tags, locations, desc length, 1,2,3-gram tfidft, month
+tags, locations, desc length, desc 1,2,3-gram tfidft, month
 
-tags, source, locations, desc length, 1,2,3-gram tfidft
+tags, source, locations, desc length, desc 1,2,3-gram tfidft
 num_votes: 0.264082779812
 num_views: 0.0957141953819
 num_comments: 0.033120785281
 
-tags, source, discrete location, desc length, 1,2,3-gram tfidft
+tags, source, discrete location, desc length, desc 1,2,3-gram tfidft
 num_votes: 0.28332472481
 num_views: 0.094269427346
 num_comments: 0.0746524978283
 
-tags, source, discrete location, desc length, 1,2,3-gram tfidft using log of predictables
+tags, source, discrete location, desc length, desc 1,2,3-gram tfidft using log of predictables
 num_votes: 0.518832612099
 num_views: 0.279848857905
 num_comments: 0.113098062096
+
+tags, source, discrete location, desc length, desc/summary 1,2,3-gram tfidft using log of predictables
+num_votes: 0.523996086688
+num_views: 0.268847649077
+num_comments: 0.127977491287
 
 Ideas
 

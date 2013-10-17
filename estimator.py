@@ -54,9 +54,12 @@ class LocationExtractor:
   def fit(self, *_):
     return self
 
-class DescriptionExtractor:
+class TextExtractor:
+  def __init__(self, column):
+    self.column = column
+
   def transform(self, data):
-    return np.asarray(data['description']).astype(str)
+    return np.asarray(data[self.column]).astype(str)
 
   def fit(self, *_):
     return self
@@ -132,14 +135,20 @@ location_featurizer = Pipeline([
 ])
 
 desc_length_featurizer = Pipeline([
-  ('desc_extractor',  DescriptionExtractor()),
+  ('desc_extractor',  TextExtractor('description')),
   ('len_vectorizer',  LengthVectorizer()),
   ('scaler',          StandardScaler()),
   ('updim_array',     ArrayUpDimension())
 ])
 
 desc_ngrams_featurizer = Pipeline([
-  ('desc_extractor',    DescriptionExtractor()),
+  ('desc_extractor',    TextExtractor('description')),
+  ('count_vectorizer',  CountVectorizer(ngram_range = (1, 3), encoding = 'cp1252')),
+  ('tfidf_transformer', TfidfTransformer())
+])
+
+summary_ngrams_featurizer = Pipeline([
+  ('summary_extractor', TextExtractor('summary')),
   ('count_vectorizer',  CountVectorizer(ngram_range = (1, 3), encoding = 'cp1252')),
   ('tfidf_transformer', TfidfTransformer())
 ])
@@ -155,6 +164,7 @@ features = FeatureUnion([
   ('location_featurizer',     location_featurizer),
   ('desc_length_featurizer',  desc_length_featurizer),
   ('desc_tfidf_ngrams',       desc_ngrams_featurizer),
+  ('summary_tfidft_ngrams',   summary_ngrams_featurizer)
 ])
 
 predictor = SGDRegressor(verbose=1)
