@@ -40,6 +40,11 @@ num_votes: 0.523996086688
 num_views: 0.268847649077
 num_comments: 0.127977491287
 
+using logp1/expm1
+num_votes: 0.523713020502
+num_views: 0.256762836596
+num_comments: 0.123213828839
+
 Ideas
 
 * train/predict values per-month and then extrapolate | bad

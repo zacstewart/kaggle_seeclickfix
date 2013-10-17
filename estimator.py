@@ -18,10 +18,10 @@ train['created_time'] = pd.to_datetime(train['created_time'])
 test['created_time']  = pd.to_datetime(test['created_time'])
 
 def targetize(variable):
-  return np.log(variable + 1)
+  return np.log1p(variable)
 
 def detargetize(prediction):
-  return np.exp(prediction) - 1
+  return np.expm1(prediction)
 
 class FactorExtractor:
   def __init__(self, factor):
