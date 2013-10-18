@@ -158,7 +158,6 @@ features = FeatureUnion([
   ('tag_features',            tag_featurizer),
   ('source_featurs',          source_featurizer),
   ('location_featurizer',     location_featurizer),
-  ('desc_length_featurizer',  desc_length_featurizer),
   ('desc_tfidf_ngrams',       desc_ngrams_featurizer),
   ('summary_tfidft_ngrams',   summary_ngrams_featurizer)
 ])
