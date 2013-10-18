@@ -207,7 +207,6 @@ for predictable in PREDICTABLES:
   predictions = pipeline.predict(test)
   predictions = detargetize(predictions)
   predictions[predictions < 0] = 0.0
-  predictions = np.around(predictions).astype(int)
   submission[predictable] = predictions
 
 submission.to_csv('submission.txt', index = False)
