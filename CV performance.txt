@@ -45,6 +45,32 @@ num_votes: 0.522000081865
 num_views: 0.260721357663
 num_comments: 0.12632832801
 
+With PCA & SelectKBest
+num_votes: -0.650944863083
+num_views: -0.291001361143
+num_comments: -0.0191092091797
+
+tags, source, discrete location, desc/summary length, desc/summary 1,2,3-gram tfidft using log of predictables, removing stopwordsl
+num_votes: 0.514002281263
+num_views: 0.242417909538
+num_comments: 0.112266823935
+
+tags, source, discrete location, desc/summary length, desc/summary 1,2,3-gram tfidft using log of predictables, removing stopwords, randomize sgdregressor
+num_votes: 0.544595060411
+num_views: 0.344700722122
+num_comments: 0.173520335492
+
+tags, source, discrete location, desc/summary 1,2,3-gram tfidft using log of predictables, removing stopwords, randomized
+num_votes: 0.559159845384
+num_views: 0.370807607579
+num_comments: 0.183745729346
+
+tags, source, discrete location, desc/summary 1,2,3-gram tfidft using log of predictables, removing stopwords, randomized
+SGDRegressor: epsilon_insensitive
+num_votes: 0.518707421864
+num_views: 0.317137291698
+num_comments: 0.0673593970279
+  
 Ideas
 
 * train/predict values per-month and then extrapolate | bad
