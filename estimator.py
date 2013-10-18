@@ -163,7 +163,7 @@ features = FeatureUnion([
   ('summary_tfidft_ngrams',   summary_ngrams_featurizer)
 ])
 
-predictor = SGDRegressor(verbose=1)
+predictor = SGDRegressor(shuffle = True, verbose = 1)
 
 pipeline = Pipeline([
   ('feature_union',  features),
