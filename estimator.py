@@ -37,16 +37,6 @@ class FactorExtractor:
     if type(tag) != str: tag = '_MISSING_'
     return tag
 
-class Dictorizer:
-  def __init__(self, label):
-    self.label = label
-
-  def transform(self, data):
-    return [{self.label: value} for value in data]
-
-  def fit(self, *_):
-    return self
-
 class LocationExtractor:
   def transform(self, data):
     return np.asarray(data[['latitude', 'longitude']])
