@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.linear_model import SGDRegressor
 from sklearn.pipeline import Pipeline, FeatureUnion
@@ -125,9 +125,9 @@ source_featurizer = Pipeline([
 
 location_featurizer = Pipeline([
   ('location_extractor',  LocationExtractor()),
-  ('kmeans',              MiniBatchKMeansTransformer(n_clusters = 8)),
-  ('dicts',               Dictorizer('location')),
-  ('dict_vectorizer',     DictVectorizer(sparse = False))
+  ('kmeans',              MiniBatchKMeansTransformer(n_clusters = 4)),
+  ('updim',               ArrayUpDimension()),
+  ('onehot',              OneHotEncoder())
 ])
 
 desc_length_featurizer = Pipeline([
