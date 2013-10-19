@@ -17,6 +17,9 @@ test  = pd.io.parsers.read_csv('data/test.csv')
 train['created_time'] = pd.to_datetime(train['created_time'])
 test['created_time']  = pd.to_datetime(test['created_time'])
 
+# Drop first 10 months
+train = train[train['created_time'] > pd.to_datetime('2012-11-01')]
+
 def targetize(variable):
   return np.log1p(variable)
 

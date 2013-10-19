@@ -30,7 +30,7 @@ num_votes: 0.28332472481
 num_views: 0.094269427346
 num_comments: 0.0746524978283
 
-tags, source, discrete location, desc length, desc 1,2,3-gram tfidft using log of predictables
+*tags, source, discrete location, desc length, desc 1,2,3-gram tfidft using log of predictables
 num_votes: 0.518832612099
 num_views: 0.279848857905
 num_comments: 0.113098062096
@@ -66,10 +66,21 @@ num_views: 0.370807607579
 num_comments: 0.183745729346
 
 tags, source, discrete location, desc/summary 1,2,3-gram tfidft using log of predictables, removing stopwords, randomized
-SGDRegressor: epsilon_insensitive
+SGDRegressor: epsilon_insensitivel
 num_votes: 0.518707421864
 num_views: 0.317137291698
 num_comments: 0.0673593970279
+
+540637f204f19e880a946dd6f1ead1c3066b8e14
+OneHotEncoder for location
+num_votes: 0.579882002646
+num_views: 0.366715392601
+num_comments: 0.198042990094
+
+Drop first 10 months
+num_votes: 0.693044418098
+num_views: 0.485191350714
+num_comments: 0.227700976805
   
 Ideas
 
