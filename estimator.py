@@ -11,11 +11,9 @@ from sklearn.cross_validation import KFold
 PREDICTABLES = ['num_votes', 'num_views', 'num_comments']
 CV = True
 
-train = pd.io.parsers.read_csv('data/train.csv')
-test  = pd.io.parsers.read_csv('data/test.csv')
 
-train['created_time'] = pd.to_datetime(train['created_time'])
-test['created_time']  = pd.to_datetime(test['created_time'])
+train = pd.io.parsers.read_csv('data/train.csv', parse_dates = ['created_time'])
+test  = pd.io.parsers.read_csv('data/test.csv', parse_dates = ['created_time'])
 
 # Drop first 10 months
 train = train[train['created_time'] > pd.to_datetime('2012-11-01')]
