@@ -81,6 +81,11 @@ Drop first 10 months
 num_votes: 0.693044418098
 num_views: 0.485191350714
 num_comments: 0.227700976805
+
+Scale only views
+num_votes: 0.406305649336
+num_views: 0.486450573171
+num_comments: 0.133119320972
   
 Ideas
 
