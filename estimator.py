@@ -11,18 +11,23 @@ from sklearn.cross_validation import KFold
 PREDICTABLES = ['num_votes', 'num_views', 'num_comments']
 CV = True
 
+SCALE = {
+    'num_votes':     np.log1p,
+    'num_comments':  np.log1p,
+    'num_views':     np.log1p
+}
+
+UNSCALE = {
+    'num_votes':     np.expm1,
+    'num_comments':  np.expm1,
+    'num_views':     np.expm1
+}
 
 train = pd.io.parsers.read_csv('data/train.csv', parse_dates = ['created_time'])
 test  = pd.io.parsers.read_csv('data/test.csv', parse_dates = ['created_time'])
 
 # Drop first 10 months
 train = train[train['created_time'] > pd.to_datetime('2012-11-01')]
-
-def targetize(variable):
-  return np.log1p(variable)
-
-def detargetize(prediction):
-  return np.expm1(prediction)
 
 class FactorExtractor:
   def __init__(self, factor):
@@ -176,10 +181,12 @@ if CV:
 
     for predictable in PREDICTABLES:
       construct_months = months_since_created.transform(construct)
-      construct_targets = targetize(construct[predictable])
+      construct_targets = construct[predictable]
+      construct_targets = SCALE[predictable](construct_targets)
 
       validate_months = months_since_created.transform(validate)
-      validate_targets = targetize(validate[predictable])
+      validate_targets = validate[predictable]
+      validate_targets = SCALE[predictable](validate_targets)
 
       pipeline.fit(construct, construct_targets)
       score = pipeline.score(validate, validate_targets)
@@ -192,11 +199,12 @@ submission = pd.DataFrame({'id': test['id']})
 
 print "Building submission"
 for predictable in PREDICTABLES:
-  train_target = targetize(train[predictable])
+  train_target = train[predictable]
+  train_target = SCALE[predictable](train_target)
 
   pipeline.fit(train, train_target)
   predictions = pipeline.predict(test)
-  predictions = detargetize(predictions)
+  predictions = UNSCALE[predictable](predictions)
   predictions[predictions < 0] = 0.0
   submission[predictable] = predictions
 
