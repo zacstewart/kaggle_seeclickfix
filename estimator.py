@@ -27,7 +27,7 @@ train = pd.io.parsers.read_csv('data/train.csv', parse_dates = ['created_time'])
 test  = pd.io.parsers.read_csv('data/test.csv', parse_dates = ['created_time'])
 
 # Drop first 10 months
-train = train[train['created_time'] > pd.to_datetime('2012-11-01')]
+train = train[train['created_time'] > pd.to_datetime('2012-11-1')]
 
 class FactorExtractor:
   def __init__(self, factor):
@@ -154,6 +154,7 @@ features = FeatureUnion([
   ('tag_features',            tag_featurizer),
   ('source_featurs',          source_featurizer),
   ('location_featurizer',     location_featurizer),
+  ('desc_length_featurizer',  desc_length_featurizer),
   ('desc_tfidf_ngrams',       desc_ngrams_featurizer),
   ('summary_tfidft_ngrams',   summary_ngrams_featurizer)
 ])
