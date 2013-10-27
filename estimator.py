@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, Tf
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.linear_model import SGDRegressor, PassiveAggressiveRegressor
+from sklearn.svm import SVR
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.cross_validation import KFold
 
@@ -159,7 +160,7 @@ features = FeatureUnion([
   ('summary_tfidft_ngrams',   summary_ngrams_featurizer)
 ])
 
-predictor = PassiveAggressiveRegressor(shuffle = True, verbose = 1)
+predictor = SVR(shrinking = False, verbose = 1, cache_size = 19456)
 
 pipeline = Pipeline([
   ('feature_union',  features),
