@@ -176,7 +176,7 @@ if CV:
 
   for construct_idx, validate_idx in k_fold:
     fold_n += 1
-    print 'Fold ' + str(fold_n)
+    print 'Fold %d' % fold_n
     construct = train.iloc[construct_idx]
     validate  = train.iloc[validate_idx]
 
@@ -194,7 +194,7 @@ if CV:
       scores[predictable].append(score)
 
   for predictable in PREDICTABLES:
-    print predictable + ': ' + str(sum(scores[predictable]) / len(scores[predictable]))
+    print '%s: %f' % (predictable, (sum(scores[predictable]) / len(scores[predictable])))
 
 submission = pd.DataFrame({'id': test['id']})
 
