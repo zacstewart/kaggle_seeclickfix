@@ -30,7 +30,7 @@ num_votes: 0.28332472481
 num_views: 0.094269427346
 num_comments: 0.0746524978283
 
-*tags, source, discrete location, desc length, desc 1,2,3-gram tfidft using log of predictables
+tags, source, discrete location, desc length, desc 1,2,3-gram tfidft using log of predictables
 num_votes: 0.518832612099
 num_views: 0.279848857905
 num_comments: 0.113098062096
@@ -86,7 +86,32 @@ Scale only views
 num_votes: 0.406305649336
 num_views: 0.486450573171
 num_comments: 0.133119320972
+
+Use only nov-mar
+num_votes: 0.670818693219
+num_views: 0.429037531062
+num_comments: 0.232684805144
+
+CURRENT BEST
+Version: 85a45eba0e7b48ec882842d0144244a57c9d6f8d
+Data: created_time > 2012-11-1
+Features: tags, source, discrete location, description length, description 1-2-3-gram tfidf, summary 1-2-3-gram tfidf
+Scaling: log(1+v)/exp(v)-1
+Model: SGDRegressor, shuffle = true
+num_votes: 0.693499645346
+num_views: 0.491912324457
+num_comments: 0.234724703221
+
+Version: 8e0c3cb98f2eaab7acedcc7a2821f8e0659176bb
+Data: created_time > 2012-11-1
+Features: tags, source, discrete location, description length, description 1-2-3-gram tfidf, summary 1-2-3-gram tfidf
+Scaling: log(1+v)/exp(v)-1
+Model: PassiveAggressiveRegressor(shuffle = True, verbose = 1)
+num_votes: 0.519433
+num_views: 0.079112
+num_comments: -0.018743
   
 Ideas
 
 * train/predict values per-month and then extrapolate | bad
+* cluster using description, use cluster id as feature
