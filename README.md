@@ -1,6 +1,7 @@
 # kaggle_seeclickfix
 
-My model for the [See Click Predict Fix][1] Kaggle competition.
+My model for the [See Click Predict Fix][1] Kaggle competition.  Read the
+[postmortem][2] for a more detailed explanation of how it works.
 
 ## Generating a submission
 
@@ -19,3 +20,4 @@ public and private leaderboard scores being very close means I didn't horribly
 overfit during the competition.
 
 [1]: http://www.kaggle.com/c/see-click-predict-fix
+[2]: http://zacstewart.com/2013/11/27/kaggle-see-click-predict-fix-postmortem.html
