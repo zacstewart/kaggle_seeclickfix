@@ -1,8 +1,6 @@
 # kaggle_seeclickfix
 
-My model for the [See Click Predictr
-Fix](http://www.kaggle.com/c/see-click-predict-fix) Kaggle
-competition.
+My model for the [See Click Predict Fix][1] Kaggle competition.
 
 ## Generating a submission
 
@@ -19,3 +17,5 @@ competition.
 Puts me in the top 70%, which is not that great, but on the bright side, my
 public and private leaderboard scores being very close means I didn't horribly
 overfit during the competition.
+
+[1]: http://www.kaggle.com/c/see-click-predict-fix
