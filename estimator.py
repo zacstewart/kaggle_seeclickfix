@@ -10,9 +10,7 @@ from sklearn.cross_validation import KFold
 
 PREDICTABLES = ['num_votes', 'num_views', 'num_comments']
 
-#PREDICTABLES = ['num_votes']
-
-CV = False
+CV = True
 
 SCALE = {
     'num_votes':     np.log1p,
@@ -207,7 +205,6 @@ for predictable in PREDICTABLES:
   train_target = SCALE[predictable](train_target)
 
   pipeline.fit(train, train_target)
-  print "got here"
   predictions = pipeline.predict(test)
   predictions = UNSCALE[predictable](predictions)
   predictions[predictions < 0] = 0.0
