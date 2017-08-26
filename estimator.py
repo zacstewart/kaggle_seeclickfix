@@ -9,7 +9,10 @@ from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.cross_validation import KFold
 
 PREDICTABLES = ['num_votes', 'num_views', 'num_comments']
-CV = True
+
+#PREDICTABLES = ['num_votes']
+
+CV = False
 
 SCALE = {
     'num_votes':     np.log1p,
@@ -23,8 +26,8 @@ UNSCALE = {
     'num_views':     np.expm1
 }
 
-train = pd.io.parsers.read_csv('data/train.csv', parse_dates = ['created_time'])
-test  = pd.io.parsers.read_csv('data/test.csv', parse_dates = ['created_time'])
+train = pd.io.parsers.read_csv('data/train.csv', parse_dates = ['created_time'], encoding = 'utf-8')
+test  = pd.io.parsers.read_csv('data/test.csv', parse_dates = ['created_time'],encoding = 'utf-8')
 
 # Drop first 10 months
 train = train[train['created_time'] > pd.to_datetime('2012-11-1')]
@@ -55,7 +58,7 @@ class TextExtractor:
     self.column = column
 
   def transform(self, data):
-    return np.asarray(data[self.column]).astype(str)
+    return np.asarray(data[self.column]).astype('U')
 
   def fit(self, *_):
     return self
@@ -169,7 +172,7 @@ pipeline = Pipeline([
 import pdb; pdb.set_trace()
 
 if CV:
-  k_fold = KFold(train.shape[0], 10, indices = True)
+  k_fold = KFold(train.shape[0], 10)
 
   scores = dict(zip(PREDICTABLES, [[], [], []]))
   fold_n = 0
@@ -204,6 +207,7 @@ for predictable in PREDICTABLES:
   train_target = SCALE[predictable](train_target)
 
   pipeline.fit(train, train_target)
+  print "got here"
   predictions = pipeline.predict(test)
   predictions = UNSCALE[predictable](predictions)
   predictions[predictions < 0] = 0.0
